@@ -1,3 +1,0 @@
-GeneratedFont.hpp:22:7:touchgfx::GeneratedFont::~GeneratedFont()	0	static
-GeneratedFont.hpp:22:7:virtual touchgfx::GeneratedFont::~GeneratedFont()	8	static
-Table_YTTE08_TTF_14_4bpp.cpp:108:26:touchgfx::GeneratedFont& getFont_YTTE08_TTF_14_4bpp()	56	static

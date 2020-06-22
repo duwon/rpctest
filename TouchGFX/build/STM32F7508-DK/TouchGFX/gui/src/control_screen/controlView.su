@@ -1,8 +1,0 @@
-Screen.hpp:140:18:virtual void touchgfx::Screen::afterTransition()	0	static
-Screen.hpp:198:18:virtual void touchgfx::Screen::handleTickEvent()	0	static
-Screen.hpp:213:18:virtual void touchgfx::Screen::handleKeyEvent(uint8_t)	0	static
-controlView.hpp:11:13:controlView::~controlView()	0	static
-controlView.cpp:13:6:virtual void controlView::tearDownScreen()	0	static
-controlView.cpp:8:6:virtual void controlView::setupScreen()	0	static
-controlView.hpp:11:13:virtual controlView::~controlView()	8	static
-controlView.cpp:3:1:controlView::controlView()	8	static

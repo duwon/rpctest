@@ -1,6 +1,0 @@
-ModelListener.hpp:30:15:virtual void ModelListener::updateLEDState(bool*)	0	static
-controlPresenter.hpp:28:13:controlPresenter::~controlPresenter()	0	static
-controlPresenter.cpp:10:6:virtual void controlPresenter::activate()	0	static
-controlPresenter.hpp:28:13:virtual controlPresenter::~controlPresenter()	8	static
-controlPresenter.hpp:28:13:virtual void* controlPresenter::_ZThn4_N16controlPresenterD1Ev()	0	static
-controlPresenter.cpp:4:1:controlPresenter::controlPresenter(controlView&)	8	static
