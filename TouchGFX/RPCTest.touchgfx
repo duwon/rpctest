@@ -1,0 +1,1692 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Components": [
+          {
+            "FileName": "background.png",
+            "Alpha": 255,
+            "OffsetX": 0,
+            "OffsetY": 0,
+            "Name": "background",
+            "X": 0,
+            "Y": 0,
+            "Width": 800,
+            "Height": 480,
+            "Type": "TiledImage",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextColor": {
+              "Red": 122,
+              "Green": 122,
+              "Blue": 122
+            },
+            "TextId": "Digital_clock",
+            "DisplaySeconds": true,
+            "DisplayLeadingZeroForHourIndicator": true,
+            "Alpha": 255,
+            "UseAmPm": false,
+            "InitialHour": 10,
+            "InitialMinute": 10,
+            "InitialSecond": 0,
+            "Name": "digitalClock",
+            "X": 20,
+            "Y": 40,
+            "Width": 150,
+            "Height": 30,
+            "Type": "DigitalClock",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "FileNameBackground": "clocks_backgrounds_clock_classic_background.png",
+            "RotationCenterX": 116,
+            "RotationCenterY": 116,
+            "UseAnimation": true,
+            "Duration": 10,
+            "Easing": "Cubic",
+            "EasingOption": "InOut",
+            "ClockHands": [
+              {
+                "Type": "SecondClockHand",
+                "FileNameHandImage": "clocks_hands_clock_classic_second_hand.png",
+                "RotationCenterX": 4,
+                "RotationCenterY": 79
+              },
+              {
+                "Type": "MinuteClockHand",
+                "FileNameHandImage": "clocks_hands_clock_classic_minute_hand.png",
+                "RotationCenterX": 2,
+                "RotationCenterY": 64,
+                "MinuteHandSecondCorrection": false
+              },
+              {
+                "Type": "HourClockHand",
+                "FileNameHandImage": "clocks_hands_clock_classic_hour_hand.png",
+                "RotationCenterX": 2,
+                "RotationCenterY": 44,
+                "HourHandMinuteCorrection": true
+              }
+            ],
+            "UseAmPm": false,
+            "InitialHour": 10,
+            "InitialMinute": 10,
+            "InitialSecond": 0,
+            "Name": "analogClock",
+            "X": 202,
+            "Y": 15,
+            "Width": 233,
+            "Height": 243,
+            "Type": "AnalogClock",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "ShowClock",
+            "HasCompletedTrigger": true,
+            "Trigger": {
+              "Type": "TriggerScreenEntered"
+            },
+            "Action": {
+              "Duration": 2000,
+              "Type": "ActionDelay"
+            }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "InteractionToTriggerOn": "ShowClock",
+              "Type": "TriggerInteractionCompleted"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionSlide",
+              "ScreenTransitionDirection": "East",
+              "ActionComponent": "start",
+              "Type": "ActionGotoScreen"
+            }
+          }
+        ],
+        "Name": "main",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "Alpha": 255,
+            "Name": "bgBox",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Type": "Box",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "F01start.png",
+            "Alpha": 255,
+            "Name": "bgLogo",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\Blue_Buttons_Round_small_pressed.png",
+            "Released": "__designer\\Blue_Buttons_Round_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId1",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style8",
+            "Name": "btnStart",
+            "X": 155,
+            "Y": 106,
+            "Width": 170,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId2",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 130,
+              "Green": 129,
+              "Blue": 129
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "tbFirmwareVersion",
+            "X": 184,
+            "Y": 64,
+            "Width": 112,
+            "Height": 17,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnStart",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "status",
+              "Type": "ActionGotoScreen"
+            }
+          }
+        ],
+        "Name": "start",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "RelativeFilename": "F02status.png",
+            "Alpha": 255,
+            "Name": "bg",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED01",
+            "X": 116,
+            "Y": 7,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED02",
+            "X": 260,
+            "Y": 7,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED03",
+            "X": 404,
+            "Y": 7,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED04",
+            "X": 116,
+            "Y": 36,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED05",
+            "X": 260,
+            "Y": 36,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED06",
+            "X": 404,
+            "Y": 36,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED07",
+            "X": 116,
+            "Y": 65,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED08",
+            "X": 260,
+            "Y": 65,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED09",
+            "X": 404,
+            "Y": 65,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED10",
+            "X": 116,
+            "Y": 94,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED11",
+            "X": 260,
+            "Y": 94,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B07_LED_G.png",
+            "Alpha": 255,
+            "Name": "statusLED12",
+            "X": 404,
+            "Y": 94,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED13",
+            "X": 116,
+            "Y": 123,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED14",
+            "X": 260,
+            "Y": 123,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED15",
+            "X": 404,
+            "Y": 123,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED16",
+            "X": 116,
+            "Y": 152,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED17",
+            "X": 260,
+            "Y": 152,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED18",
+            "X": 404,
+            "Y": 152,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED19",
+            "X": 116,
+            "Y": 181,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED20",
+            "X": 260,
+            "Y": 181,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED21",
+            "X": 404,
+            "Y": 181,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED22",
+            "X": 116,
+            "Y": 210,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED23",
+            "X": 260,
+            "Y": 210,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED24",
+            "X": 404,
+            "Y": 210,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED25",
+            "X": 116,
+            "Y": 239,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED26",
+            "X": 260,
+            "Y": 239,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "RelativeFilename": "B08_LED_R.png",
+            "Alpha": 255,
+            "Name": "statusLED27",
+            "X": 404,
+            "Y": 239,
+            "Width": 25,
+            "Height": 25,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "selectMenu_none.png",
+            "Released": "selectMenu_none.png",
+            "Alpha": 255,
+            "Name": "btnSelStatus",
+            "X": 436,
+            "Y": 6,
+            "Width": 40,
+            "Height": 127,
+            "Type": "Button",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "selectMenu_none.png",
+            "Released": "selectMenu_none.png",
+            "Alpha": 255,
+            "Name": "btnSelControl",
+            "X": 436,
+            "Y": 139,
+            "Width": 40,
+            "Height": 127,
+            "Type": "Button",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId3",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn01",
+            "X": -2,
+            "Y": 2,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId4",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn02",
+            "X": 142,
+            "Y": 2,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId5",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn03",
+            "X": 286,
+            "Y": 2,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId6",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn04",
+            "X": -2,
+            "Y": 32,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId7",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn05",
+            "X": 142,
+            "Y": 32,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId8",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn06",
+            "X": 286,
+            "Y": 32,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId9",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn07",
+            "X": -2,
+            "Y": 61,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId10",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn08",
+            "X": 142,
+            "Y": 61,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId11",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn09",
+            "X": 286,
+            "Y": 61,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId12",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn10",
+            "X": -2,
+            "Y": 90,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId13",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn11",
+            "X": 142,
+            "Y": 90,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId14",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn12",
+            "X": 286,
+            "Y": 90,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId15",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn13",
+            "X": -2,
+            "Y": 120,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId16",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn14",
+            "X": 142,
+            "Y": 120,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId17",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn15",
+            "X": 286,
+            "Y": 120,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId18",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn16",
+            "X": -2,
+            "Y": 148,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId19",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn17",
+            "X": 142,
+            "Y": 148,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId20",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn18",
+            "X": 286,
+            "Y": 148,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId21",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn19",
+            "X": -2,
+            "Y": 177,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId22",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn20",
+            "X": 142,
+            "Y": 177,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId23",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn21",
+            "X": 286,
+            "Y": 177,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId24",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn22",
+            "X": -2,
+            "Y": 206,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId25",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn23",
+            "X": 142,
+            "Y": 206,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId26",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn24",
+            "X": 286,
+            "Y": 206,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId27",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn25",
+            "X": -2,
+            "Y": 235,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId28",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn26",
+            "X": 142,
+            "Y": 235,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "A01_btn.png",
+            "Released": "A01_btn.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId29",
+            "ReleasedColor": {
+              "Red": 0,
+              "Green": 0,
+              "Blue": 0
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "btn27",
+            "X": 286,
+            "Y": 235,
+            "Width": 121,
+            "Height": 33,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "btnEquip01_clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btn01",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "btnEquip01_clicked",
+              "Type": "ActionCustom"
+            }
+          }
+        ],
+        "Name": "status",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "RelativeFilename": "F03control.png",
+            "Alpha": 255,
+            "Name": "bg",
+            "X": 0,
+            "Y": 0,
+            "Width": 480,
+            "Height": 272,
+            "Type": "Image",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "selectMenu_none.png",
+            "Released": "selectMenu_none.png",
+            "Alpha": 255,
+            "Name": "btnSelStatus",
+            "X": 436,
+            "Y": 6,
+            "Width": 40,
+            "Height": 127,
+            "Type": "Button",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "selectMenu_none.png",
+            "Released": "selectMenu_none.png",
+            "Alpha": 255,
+            "Name": "btnSelControl",
+            "X": 436,
+            "Y": 139,
+            "Width": 40,
+            "Height": 127,
+            "Type": "Button",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [],
+        "Name": "control",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "TextEntries": [
+      {
+        "TextEntryId": "Digital_clock",
+        "IsResource": true
+      },
+      {
+        "TextEntryId": "SingleUseId1",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId2",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId5",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId6",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId7",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId8",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId10",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId11",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId12",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId13",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId14",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId15",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId16",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId17",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId18",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId19",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId20",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId21",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId22",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId23",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId24",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId25",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId26",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId27",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId28",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId29",
+        "IsResource": false
+      }
+    ],
+    "Name": "STM32F7508-DK",
+    "Resolution": {
+      "Width": 480,
+      "Height": 272
+    },
+    "SelectedColorDepth": 24,
+    "StartupScreenName": "start",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Blue",
+    "TouchGfxPath": "../Middlewares/ST/touchgfx",
+    "UIPath": ".",
+    "AvailableColorDepths": [
+      24
+    ],
+    "AvailableLCDs": {
+      "24": "LCD24bpp"
+    },
+    "AvailableSections": [
+      "ExtFlashSection",
+      "IntFlashSection"
+    ],
+    "AvailableResolutions": [
+      {
+        "Width": 480,
+        "Height": 272
+      }
+    ],
+    "PhysicalButtons": [],
+    "FrameworkFeatures": {
+      "LCD24bpp": {
+        "Id": "LCD24bpp",
+        "IsEnabled": true
+      }
+    },
+    "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j8",
+    "PostGenerateCommand": "touchgfx update_project --project-file=simulator/msvs/Application.vcxproj",
+    "PostGenerateTargetCommand": "touchgfx update_project --project-file=../STM32F7508-DK.ioc --platform=m7",
+    "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j8",
+    "RunSimulatorCommand": "build\\bin\\simulator.exe",
+    "CompileTargetCommand": "make -f ../gcc/Makefile -j8",
+    "FlashTargetCommand": "make -f ../gcc/Makefile flash -j8",
+    "LandscapeSkinX": 0,
+    "LandscapeSkinY": 0,
+    "PortraitSkinX": 0,
+    "PortraitSkinY": 0,
+    "DisplayOrientation": "Landscape"
+  },
+  "Version": "4.13.0",
+  "CreatedBy": "4.13.0"
+}

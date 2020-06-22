@@ -1,0 +1,6 @@
+statusPresenter.hpp:28:13:statusPresenter::~statusPresenter()	0	static
+statusPresenter.cpp:10:6:virtual void statusPresenter::activate()	0	static
+statusPresenter.cpp:20:6:virtual void statusPresenter::updateLEDState(bool*)	0	static
+statusPresenter.hpp:28:13:virtual statusPresenter::~statusPresenter()	8	static
+statusPresenter.hpp:28:13:virtual void* statusPresenter::_ZThn4_N15statusPresenterD1Ev()	0	static
+statusPresenter.cpp:4:1:statusPresenter::statusPresenter(statusView&)	8	static

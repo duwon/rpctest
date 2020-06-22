@@ -1,0 +1,3 @@
+Texts.cpp:45:6:static void touchgfx::Texts::setLanguage(touchgfx::LanguageId)	16	static
+Texts.cpp:75:6:static void touchgfx::Texts::setTranslation(touchgfx::LanguageId, const void*)	0	static
+Texts.cpp:80:39:const UnicodeChar* touchgfx::Texts::getText(touchgfx::TypedTextId) const	0	static

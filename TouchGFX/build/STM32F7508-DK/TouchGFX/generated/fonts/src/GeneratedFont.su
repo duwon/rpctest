@@ -1,0 +1,13 @@
+Font.hpp:230:30:virtual const touchgfx::GlyphNode* touchgfx::Font::getGlyph(touchgfx::Unicode::UnicodeChar) const	16	static
+Font.hpp:249:34:virtual touchgfx::Unicode::UnicodeChar touchgfx::Font::getFallbackChar() const	0	static
+Font.hpp:264:34:virtual touchgfx::Unicode::UnicodeChar touchgfx::Font::getEllipsisChar() const	0	static
+Font.hpp:373:22:virtual uint16_t touchgfx::Font::getFontHeight() const	0	static
+Font.hpp:389:22:virtual uint16_t touchgfx::Font::getMinimumTextHeight() const	0	static
+Font.hpp:403:21:virtual uint8_t touchgfx::Font::getBitsPerPixel() const	0	static
+Font.hpp:417:21:virtual uint8_t touchgfx::Font::getDataFormatA4() const	0	static
+GeneratedFont.hpp:91:29:virtual const uint16_t* touchgfx::GeneratedFont::getGSUBTable() const	0	static
+GeneratedFont.hpp:22:7:touchgfx::GeneratedFont::~GeneratedFont()	0	static
+GeneratedFont.cpp:16:16:virtual const uint8_t* touchgfx::GeneratedFont::getPixelData(const touchgfx::GlyphNode*) const	0	static
+GeneratedFont.cpp:22:8:virtual int8_t touchgfx::GeneratedFont::getKerning(touchgfx::Unicode::UnicodeChar, const touchgfx::GlyphNode*) const	12	static
+GeneratedFont.hpp:22:7:virtual touchgfx::GeneratedFont::~GeneratedFont()	8	static
+GeneratedFont.cpp:8:1:touchgfx::GeneratedFont::GeneratedFont(const touchgfx::GlyphNode*, uint16_t, uint16_t, uint8_t, uint8_t, uint8_t, uint8_t, uint8_t, const uint8_t* const*, const touchgfx::KerningNode*, touchgfx::Unicode::UnicodeChar, touchgfx::Unicode::UnicodeChar, const uint16_t*)	48	static
