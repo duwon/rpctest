@@ -28,6 +28,7 @@ public:
         model = m;
     }
 	virtual void updateLEDState(bool* bLEDStatus) {}
+
 protected:
     Model* model;
 };

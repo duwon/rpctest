@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32f7508_discovery_sdram.h"
+#include "user.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,6 +61,8 @@ DMA_HandleTypeDef hdma_usart6_rx;
 SDRAM_HandleTypeDef hsdram1;
 
 osThreadId TouchGFXTaskHandle;
+osThreadId UartMsgTaskHandle;
+osSemaphoreId binaryUartRxMsgHandle;
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -77,6 +80,7 @@ static void MX_USART1_UART_Init(void);
 static void MX_UART7_Init(void);
 static void MX_USART6_UART_Init(void);
 void TouchGFX_Task(void const * argument);
+void UartMsg_Task(void const * argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -141,6 +145,11 @@ int main(void)
   /* add mutexes, ... */
   /* USER CODE END RTOS_MUTEX */
 
+  /* Create the semaphores(s) */
+  /* definition and creation of binaryUartRxMsg */
+  osSemaphoreDef(binaryUartRxMsg);
+  binaryUartRxMsgHandle = osSemaphoreCreate(osSemaphore(binaryUartRxMsg), 1);
+
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
@@ -157,6 +166,10 @@ int main(void)
   /* definition and creation of TouchGFXTask */
   osThreadDef(TouchGFXTask, TouchGFX_Task, osPriorityNormal, 0, 2048);
   TouchGFXTaskHandle = osThreadCreate(osThread(TouchGFXTask), NULL);
+
+  /* definition and creation of UartMsgTask */
+  osThreadDef(UartMsgTask, UartMsg_Task, osPriorityIdle, 0, 128);
+  UartMsgTaskHandle = osThreadCreate(osThread(UartMsgTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -614,6 +627,26 @@ __weak void TouchGFX_Task(void const * argument)
     osDelay(1);
   }
   /* USER CODE END 5 */ 
+}
+
+/* USER CODE BEGIN Header_UartMsg_Task */
+/**
+* @brief Function implementing the UartMsgTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_UartMsg_Task */
+void UartMsg_Task(void const * argument)
+{
+  /* USER CODE BEGIN UartMsg_Task */
+  user_start();
+  /* Infinite loop */
+  for(;;)
+  {
+    user_while();
+    osDelay(1);
+  }
+  /* USER CODE END UartMsg_Task */
 }
 
 /* MPU Configuration */

@@ -1,19 +1,26 @@
 #include <gui/status_screen/statusView.hpp>
 #include "BitmapDatabase.hpp"
+#include <string.h>
 
 statusView::statusView()
 {
-
 }
 
 void statusView::setupScreen()
 {
     statusViewBase::setupScreen();
+	updateLEDState(currLEDStatus);
 }
 
 void statusView::tearDownScreen()
 {
     statusViewBase::tearDownScreen();
+}
+
+void statusView::saveLEDState(bool* bLEDStatus)
+{
+	memcpy(currLEDStatus, bLEDStatus, sizeof(currLEDStatus));
+	updateLEDState(currLEDStatus);
 }
 
 void statusView::updateLEDState(bool* bLEDStatus)
@@ -24,6 +31,7 @@ void statusView::updateLEDState(bool* bLEDStatus)
 
 	for (int i = 0; i < 27; i++)
 	{
+		currLEDStatus[i] = bLEDStatus[i];
 		if (bLEDStatus[i] == true)
 		{
 			statusLED[i]->setBitmap(touchgfx::Bitmap(BITMAP_B07_LED_G_ID));

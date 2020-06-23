@@ -34,3 +34,11 @@
 .vs
 TouchGFX/build/
 TouchGFX/generated/
+MDK-ARM/STM32F7508-DK/
+MDK-ARM/RTE/
+MDK-ARM/DebugConfig/
+*.duwon
+*.lst
+STM32CubeIDE/Debug/makefile
+STM32CubeIDE/Debug/
+STM32CubeIDE/.settings/

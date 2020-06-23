@@ -1445,7 +1445,7 @@
         ],
         "Interactions": [
           {
-            "InteractionName": "btnEquip01_clicked",
+            "InteractionName": "btnControl_clicked",
             "HasCompletedTrigger": false,
             "Trigger": {
               "TriggerComponent": "btnSelControl",

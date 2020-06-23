@@ -11,9 +11,11 @@ public:
     virtual ~statusView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
-	virtual void btnEquip01_clicked();
-	virtual void updateLEDState(bool* bLEDStatus);
+    virtual void saveLEDState(bool* bLEDStatus);
+	void updateLEDState(bool* bLEDStatus);
+
 protected:
+    bool currLEDStatus[27];
 };
 
 #endif // STATUSVIEW_HPP

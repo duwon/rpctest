@@ -1,24 +1,21 @@
 #include <gui/model/Model.hpp>
 #include <gui/model/ModelListener.hpp>
+#include "cmsis_os.h"
+
+extern osSemaphoreId binaryUartRxMsgHandle;
+extern bool statusLED[27];
 
 Model::Model() : modelListener(0)
 {
 }
 
-int count = 0;
-bool ledStatus[27] = { false, };
 void Model::tick()
 {
-	count++;
-
-	if (count == 100)
+	if(binaryUartRxMsgHandle != NULL)
 	{
-		count = 0;
-		for (int i = 0; i < 27; i++)
+		if(xSemaphoreTake(binaryUartRxMsgHandle, (TickType_t) 10) == pdTRUE)
 		{
-			ledStatus[i] ^= true;
+			modelListener->updateLEDState(statusLED);
 		}
-		modelListener->updateLEDState(ledStatus);
-
 	}
 }

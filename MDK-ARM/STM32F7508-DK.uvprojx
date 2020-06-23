@@ -10,14 +10,14 @@
       <TargetName>STM32F7508-DK</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <uAC6>0</uAC6>
+      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F750N8Hx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F7xx_DFP.2.12.1</PackID>
+          <PackID>Keil.STM32F7xx_DFP.2.12.0</PackID>
           <PackURL>https://www.keil.com/pack/</PackURL>
-          <Cpu>IRAM(0x20000000-0x2004FFFF) IROM(0x8000000-0x800FFFF) CLOCK(12000000) FPU3(SFPU) CPUTYPE("Cortex-M7") ELITTLE</Cpu>
+          <Cpu>IRAM(0x20000000-0x2004FFFF) IROM(0x8000000-0x800FFFF)  CLOCK(12000000) FPU3(SFPU) CPUTYPE("Cortex-M7") ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
           <FlashDriverDll></FlashDriverDll>
@@ -133,11 +133,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4107</DriverSelection>
+            <DriverSelection>4100</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -183,7 +183,6 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>2</RvdsVP>
-            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -324,7 +323,6 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -337,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F750xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../TouchGFX/App;../TouchGFX/target/generated;../TouchGFX/target;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1;../Drivers/CMSIS/Device/ST/STM32F7xx/Include;../Drivers/CMSIS/Include;../Drivers/BSP/Components/Common;../Drivers/BSP/STM32F7508-Discovery;../middlewares/st/touchgfx/framework/include;../touchgfx/generated/fonts/include;../touchgfx/generated/gui_generated/include;../touchgfx/generated/images/include;../touchgfx/generated/texts/include;../touchgfx/gui/include</IncludePath>
+              <IncludePath>../Core/Inc;  ../TouchGFX/App;  ../TouchGFX/target/generated;  ../TouchGFX/target;  ../Drivers/STM32F7xx_HAL_Driver/Inc;  ../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;  ../Middlewares/Third_Party/FreeRTOS/Source/include;  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;  ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1;  ../Drivers/CMSIS/Device/ST/STM32F7xx/Include;  ../Drivers/CMSIS/Include;  ../Drivers/BSP/Components/Common;  ../Drivers/BSP/STM32F7508-Discovery; ../middlewares/st/touchgfx/framework/include; ../touchgfx/generated/fonts/include; ../touchgfx/generated/gui_generated/include; ../touchgfx/generated/images/include; ../touchgfx/generated/texts/include; ../touchgfx/gui/include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -456,6 +454,11 @@
         <Group>
           <GroupName>Application/User/Core</GroupName>
           <Files>
+            <File>
+              <FileName>user.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\user.c</FilePath>
+            </File>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
@@ -710,6 +713,331 @@
               <FileName>port.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM7/r0p1/port.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>gui</GroupName>
+          <Files>
+            <File>
+              <FileName>controlPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/control_screen/controlpresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>controlView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/control_screen/controlview.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FrontendApplication.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/common/frontendapplication.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>mainPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/main_screen/mainpresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>mainView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/main_screen/mainview.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Model.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/model/model.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>startPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/start_screen/startpresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>startView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/start_screen/startview.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>statusPresenter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/status_screen/statuspresenter.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>statusView.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/gui/src/status_screen/statusview.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>generated</GroupName>
+          <Files>
+            <File>
+              <FileName>A01_btn.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/a01_btn.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>A04_LED_G.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/a04_led_g.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>A05_LED_R.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/a05_led_r.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>A06_LED_W.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/a06_led_w.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>A09_sel.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/a09_sel.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ApplicationFontProvider.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/applicationfontprovider.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>B07_LED_G.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/b07_led_g.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>B08_LED_R.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/b08_led_r.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>B09_LED_B.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/b09_led_b.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>background.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/background.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>BitmapDatabase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/bitmapdatabase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Buttons_Round_small.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/__designer/blue_buttons_round_small.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Blue_Buttons_Round_small_pressed.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/__designer/blue_buttons_round_small_pressed.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>C01_BTN.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/c01_btn.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>C01_BTN_SELECTED.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/c01_btn_selected.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>CachedFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/cachedfont.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>clocks_backgrounds_clock_classic_background.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/clocks_backgrounds_clock_classic_background.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>clocks_hands_clock_classic_hour_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/clocks_hands_clock_classic_hour_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>clocks_hands_clock_classic_minute_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/clocks_hands_clock_classic_minute_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>clocks_hands_clock_classic_second_hand.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/clocks_hands_clock_classic_second_hand.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>controlViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/gui_generated/src/control_screen/controlviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>F01start.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/f01start.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>F02status.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/f02status.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>F03control.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/f03control.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_12_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_12_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_14_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_14_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_14_4bpp_21.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_14_4bpp_21.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_14_4bpp_22.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_14_4bpp_22.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_14_4bpp_23.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_14_4bpp_23.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_14_4bpp_24.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_14_4bpp_24.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_14_4bpp_25.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_14_4bpp_25.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_14_4bpp_26.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_14_4bpp_26.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_24_4bpp_0.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_24_4bpp_0.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_24_4bpp_24.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_24_4bpp_24.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Font_YTTE08_TTF_24_4bpp_25.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/font_ytte08_ttf_24_4bpp_25.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FontCache.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/fontcache.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FrontendApplicationBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/gui_generated/src/common/frontendapplicationbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>GeneratedFont.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/generatedfont.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_YTTE08_TTF_12_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/kerning_ytte08_ttf_12_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_YTTE08_TTF_14_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/kerning_ytte08_ttf_14_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Kerning_YTTE08_TTF_24_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/kerning_ytte08_ttf_24_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LanguageGb.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/texts/src/languagegb.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>mainViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/gui_generated/src/main_screen/mainviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>selectMenu_none.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/images/src/selectmenu_none.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>startViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/gui_generated/src/start_screen/startviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>statusViewBase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/gui_generated/src/status_screen/statusviewbase.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_YTTE08_TTF_12_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/table_ytte08_ttf_12_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_YTTE08_TTF_14_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/table_ytte08_ttf_14_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Table_YTTE08_TTF_24_4bpp.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/fonts/src/table_ytte08_ttf_24_4bpp.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Texts.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/texts/src/texts.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TypedTextDatabase.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>../touchgfx/generated/texts/src/typedtextdatabase.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Lib</GroupName>
+          <Files>
+            <File>
+              <FileName>touchgfx_core.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>../middlewares/st/touchgfx/lib/core/cortex_m7/Keil/touchgfx_core.lib</FilePath>
             </File>
           </Files>
         </Group>
