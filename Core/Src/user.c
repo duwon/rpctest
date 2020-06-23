@@ -2,9 +2,15 @@
 #include "user.h"
 #include "cmsis_os.h"
 
-uartFIFO_TypeDef rxBufferUart1;
+uartFIFO_TypeDef rxBufferUart1; /* Debug Port */
+uartFIFO_TypeDef rxBufferUart6; /* RS-422 Port */
+uartFIFO_TypeDef rxBufferUart7; /* Raspberry Pi Port */
 message_TypeDef rxMsgFrame1;
+message_TypeDef rxMsgFrame6;
+message_TypeDef rxMsgFrame7;
+
 bool statusLED[27] = {0,};
+int controlSceinario = 0;
 
 extern UART_HandleTypeDef huart7;
 extern UART_HandleTypeDef huart1;
@@ -89,17 +95,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	}
 }
 
-/*
-[0] STX - 0x31
-[1] STX - 0x32
-[2] Type - 0x00
-[3] Length - 0~END
-[4] LED 0~7
-[5] LED 8~15
-[6] LED 16~23
-[7] Checksum
-[8] END
-*/
 static void procPacketAnalysis(message_TypeDef *messageFrame, volatile uartFIFO_TypeDef *buffer)
 {
   uint8_t checksum = 0;
@@ -192,34 +187,135 @@ static void procPacketAnalysis(message_TypeDef *messageFrame, volatile uartFIFO_
   }
 }
 
-void parsingRxMsg(void)
+void parsingRxMsg1(void)
 {
-  uint32_t tmpStatusLED = (uint32_t)rxMsgFrame1.data[4] + ((uint32_t)rxMsgFrame1.data[5] << 8) + ((uint32_t)rxMsgFrame1.data[6] << 16);
-  for(int i=0; i<23; i++)
+  uint32_t tmpStatusLED;
+  switch (rxMsgFrame6.command)
   {
-    if(((tmpStatusLED >> i)&0x01) == 0x01)
+  case 0x00:
+    tmpStatusLED = (uint32_t)rxMsgFrame1.data[4] + ((uint32_t)rxMsgFrame1.data[5] << 8) + ((uint32_t)rxMsgFrame1.data[6] << 16) + ((uint32_t)rxMsgFrame1.data[7] << 24);
+    for (int i = 0; i < 27; i++)
     {
-      statusLED[i] = true;
+      if (((tmpStatusLED >> i) & 0x01) == 0x01)
+      {
+        statusLED[i] = true;
+      }
+      else
+      {
+        statusLED[i] = false;
+      }
     }
-    else
-    {
-      statusLED[i] = false;
-    }
+    xSemaphoreGive(binaryUartRxMsgHandle);
+    break;
+
+  default:
+    break;
   }
-  xSemaphoreGive(binaryUartRxMsgHandle);
+}
+
+/*
+[0] STX - 0x31
+[1] STX - 0x32
+[2] Type - 0x00
+[3] Length - 0~END
+[4] LED 0~7
+[5] LED 8~15
+[6] LED 16~23
+[7] Checksum
+[8] END
+*/
+void parsingRxMsg6(void)
+{
+  uint32_t tmpStatusLED;
+  switch (rxMsgFrame6.command)
+  {
+  case 0x00:
+    tmpStatusLED = (uint32_t)rxMsgFrame1.data[4] + ((uint32_t)rxMsgFrame1.data[5] << 8) + ((uint32_t)rxMsgFrame1.data[6] << 16);
+    for (int i = 0; i < 23; i++)
+    {
+      if (((tmpStatusLED >> i) & 0x01) == 0x01)
+      {
+        statusLED[i] = true;
+      }
+      else
+      {
+        statusLED[i] = false;
+      }
+    }
+    xSemaphoreGive(binaryUartRxMsgHandle);
+    break;
+
+  default:
+    break;
+  }
+}
+
+/*
+[0] STX - 0x31
+[1] STX - 0x32
+[2] Type - 0x00
+[3] Length - 0~END
+[4] LED 24~27
+[5] Checksum
+[6] END
+*/
+void parsingRxMsg7(void)
+{
+  uint32_t tmpStatusLED;
+  switch (rxMsgFrame7.command)
+  {
+  case 0x00:
+    tmpStatusLED = (uint32_t)rxMsgFrame1.data[4];
+    for (int i = 0; i < 4; i++)
+    {
+      if (((tmpStatusLED >> i) & 0x01) == 0x01)
+      {
+        statusLED[i + 23] = true;
+      }
+      else
+      {
+        statusLED[i + 23] = false;
+      }
+    }
+    xSemaphoreGive(binaryUartRxMsgHandle);
+    break;
+  default:
+    break;
+  }
 }
 
 void user_start(void)
 {
-	initBuffer(&rxBufferUart1);
-	HAL_UART_Receive_DMA(&huart1, &rxBufferUart1.rxCh, 1);
-  rxMsgFrame1.parsing = parsingRxMsg;
+  initBuffer(&rxBufferUart1);
+  initBuffer(&rxBufferUart6);
+  initBuffer(&rxBufferUart7);
+  HAL_UART_Receive_DMA(&huart1, &rxBufferUart1.rxCh, 1);
+  HAL_UART_Receive_DMA(&huart6, &rxBufferUart6.rxCh, 1);
+  HAL_UART_Receive_DMA(&huart7, &rxBufferUart7.rxCh, 1);
+  rxMsgFrame1.parsing = parsingRxMsg1;
+  rxMsgFrame6.parsing = parsingRxMsg6;
+  rxMsgFrame7.parsing = parsingRxMsg7;
 }
 
 void user_while(void)
 {
   procPacketAnalysis(&rxMsgFrame1, &rxBufferUart1);
+  procPacketAnalysis(&rxMsgFrame6, &rxBufferUart6);
+  procPacketAnalysis(&rxMsgFrame7, &rxBufferUart7);
+
+  char tmpCtrlBtn;
+  switch (controlSceinario)
+  {
+  case 1:
+    HAL_UART_Transmit(&huart1, (uint8_t *)&"CTL01", 5, 0xFFFF);
+    break;
+  default:
+    if (controlSceinario != 0)
+    {
+      tmpCtrlBtn = controlSceinario + 0x30;
+      HAL_UART_Transmit(&huart1, (uint8_t *)&tmpCtrlBtn, 1, 0xFFFF);
+    }
+    break;
+  }
+  controlSceinario = 0;
 }
-
-
-

@@ -16,3 +16,10 @@ void controlPresenter::deactivate()
 {
 
 }
+
+void controlPresenter::sendControlMessage(int btnNum)
+{
+    model->sendControlMessage(btnNum);
+}
+
+

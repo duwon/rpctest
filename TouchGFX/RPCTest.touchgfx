@@ -200,6 +200,11 @@
             "Alpha": 255,
             "AutoSize": true,
             "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId40",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
             "Name": "tbFirmwareVersion",
             "X": 184,
             "Y": 64,
@@ -1457,6 +1462,19 @@
               "ActionComponent": "control",
               "Type": "ActionGotoScreen"
             }
+          },
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btn01",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Includes": "#include \"main.h\"\r\n\r\nextern UART_HandleTypeDef huart1;",
+              "Code": "HAL_UART_Transmit(&huart1, (uint8_t *)&\"BTN01\", 5, 0xFFFF);",
+              "Type": "ActionExecuteCode"
+            }
           }
         ],
         "Name": "status",
@@ -1795,7 +1813,7 @@
         ],
         "Interactions": [
           {
-            "InteractionName": "Interaction1",
+            "InteractionName": "btnStatus",
             "HasCompletedTrigger": false,
             "Trigger": {
               "TriggerComponent": "btnSelStatus",
@@ -1806,6 +1824,126 @@
               "ScreenTransitionDirection": "West",
               "ActionComponent": "status",
               "Type": "ActionGotoScreen"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl01_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl01",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(1);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl02_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl02",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(2);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl03_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl03",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(3);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl04_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl04",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(4);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl05_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl05",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(5);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl06_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl06",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(6);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl07_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl07",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(7);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl08_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl08",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(8);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl09_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl09",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(9);",
+              "Type": "ActionExecuteCode"
+            }
+          },
+          {
+            "InteractionName": "btnCtrl10_Clicked",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "btnCtrl10",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "Code": "presenter->sendControlMessage(10);",
+              "Type": "ActionExecuteCode"
             }
           }
         ],
@@ -1974,6 +2112,10 @@
       },
       {
         "TextEntryId": "SingleUseId39",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId40",
         "IsResource": false
       }
     ],

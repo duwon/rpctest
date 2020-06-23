@@ -4,6 +4,7 @@
 
 extern osSemaphoreId binaryUartRxMsgHandle;
 extern bool statusLED[27];
+extern int controlSceinario;
 
 Model::Model() : modelListener(0)
 {
@@ -18,4 +19,9 @@ void Model::tick()
 			modelListener->updateLEDState(statusLED);
 		}
 	}
+}
+
+void Model::sendControlMessage(int btnNum)
+{
+	controlSceinario = btnNum;
 }

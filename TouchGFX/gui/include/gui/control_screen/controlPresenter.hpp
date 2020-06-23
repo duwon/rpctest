@@ -27,6 +27,8 @@ public:
 
     virtual ~controlPresenter() {};
 
+    virtual void sendControlMessage(int btnNum);
+
 private:
     controlPresenter();
 

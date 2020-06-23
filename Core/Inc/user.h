@@ -4,6 +4,7 @@
 #include "main.h"
 #include <stdbool.h>
 /* Message Define -------------------------------*/
+#define FIRMWARE_VSERSION           "1.1"
 #define UART_BUFFER_SIZE                     400U	/* 통신 버퍼 최대 크기 */
 #define MESSAGE_MAX_SIZE                   50U  /* 메시지 최대 크기 */
 
