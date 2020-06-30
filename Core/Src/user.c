@@ -1,4 +1,5 @@
 #include <stdbool.h>
+#include <string.h>
 #include "user.h"
 #include "cmsis_os.h"
 
@@ -88,7 +89,17 @@ static ErrorStatus getByteFromBuffer(volatile uartFIFO_TypeDef *buffer, uint8_t 
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-	if(huart->Instance == USART1)
+	if(huart->Instance == USART6)
+	{
+		putByteToBuffer(&rxBufferUart6, rxBufferUart6.rxCh);
+		HAL_UART_Receive_DMA(huart, &rxBufferUart6.rxCh, 1);
+	}
+	else if(huart->Instance == UART7)
+	{
+		putByteToBuffer(&rxBufferUart7, rxBufferUart7.rxCh);
+		HAL_UART_Receive_DMA(huart, &rxBufferUart7.rxCh, 1);
+	}
+	else if(huart->Instance == USART1)
 	{
 		putByteToBuffer(&rxBufferUart1, rxBufferUart1.rxCh);
 		HAL_UART_Receive_DMA(huart, &rxBufferUart1.rxCh, 1);
@@ -100,7 +111,7 @@ static void procPacketAnalysis(message_TypeDef *messageFrame, volatile uartFIFO_
   uint8_t checksum = 0;
   while ((getByteFromBuffer(buffer, (uint8_t *)&buffer->buffCh) == SUCCESS) || (messageFrame->nextStage == S_PARSING))
   {
-
+		HAL_UART_Transmit(&huart1, (uint8_t *)&buffer->buffCh, 1, 0xFFFF);
     switch (messageFrame->nextStage)
     {
     case S_START:
@@ -133,7 +144,15 @@ static void procPacketAnalysis(message_TypeDef *messageFrame, volatile uartFIFO_
     case S_LENGTH:
       messageFrame->length = buffer->buffCh;
       messageFrame->data[3] = buffer->buffCh;
-      messageFrame->nextStage = S_DATA;
+
+      if (messageFrame->length == 6)
+      {
+        messageFrame->nextStage = S_CHECKSUM;
+      }
+      else
+      {
+        messageFrame->nextStage = S_DATA;
+      }
       break;
 
     case S_DATA:
@@ -148,7 +167,7 @@ static void procPacketAnalysis(message_TypeDef *messageFrame, volatile uartFIFO_
     case S_CHECKSUM:
       messageFrame->checksum = buffer->buffCh;
       checksum = 0;
-      for (int i = 0; i < (messageFrame->length - 2); i++)
+      for (int i = 2; i < (messageFrame->length - 2); i++)
       {
         checksum ^= messageFrame->data[i];
       }
@@ -161,7 +180,7 @@ static void procPacketAnalysis(message_TypeDef *messageFrame, volatile uartFIFO_
       {
         messageFrame->nextStage = S_START;
       }
-      messageFrame->nextStage = S_END; //임시 테스트용
+      messageFrame->nextStage = S_END; //임시 테스트용, 체크섬 확인 안함
       break;
 
     case S_END:
@@ -187,10 +206,61 @@ static void procPacketAnalysis(message_TypeDef *messageFrame, volatile uartFIFO_
   }
 }
 
-void parsingRxMsg1(void)
+void parsingDefault(message_TypeDef *rxMsgFrame)
 {
   uint32_t tmpStatusLED;
-  switch (rxMsgFrame6.command)
+  switch (rxMsgFrame->command)
+  {
+  case 0xA0:
+    if (rxMsgFrame->data[4] < 27)
+    {
+      statusLED[rxMsgFrame->data[4]] = (bool)rxMsgFrame->data[5];
+    }
+    xSemaphoreGive(binaryUartRxMsgHandle);
+    break;
+
+  case 0xB0:
+    tmpStatusLED = (uint32_t)rxMsgFrame->data[4] + ((uint32_t)rxMsgFrame->data[5] << 8) + ((uint32_t)rxMsgFrame->data[6] << 16) + ((uint32_t)rxMsgFrame->data[7] << 24);
+    for (int i = 0; i < 27; i++)
+    {
+      if (((tmpStatusLED >> i) & 0x01) == 0x01)
+      {
+        statusLED[i] = true;
+      }
+      else
+      {
+        statusLED[i] = false;
+      }
+    }
+    xSemaphoreGive(binaryUartRxMsgHandle);
+    break;
+
+  case 0xC0:
+    for (int i = 0; i < 27; i++)
+    {
+      statusLED[i] = false;
+    }
+    xSemaphoreGive(binaryUartRxMsgHandle);
+    break;
+
+  case 0xC1:
+    for (int i = 0; i < 27; i++)
+    {
+      statusLED[i] = true;
+    }
+    xSemaphoreGive(binaryUartRxMsgHandle);
+    break;
+
+  default:
+    break;
+  }
+  
+}
+
+void parsingRxMsg1(void) /* 디버그 포트 */
+{
+  uint32_t tmpStatusLED;
+  switch (rxMsgFrame1.command)
   {
   case 0x00:
     tmpStatusLED = (uint32_t)rxMsgFrame1.data[4] + ((uint32_t)rxMsgFrame1.data[5] << 8) + ((uint32_t)rxMsgFrame1.data[6] << 16) + ((uint32_t)rxMsgFrame1.data[7] << 24);
@@ -209,28 +279,18 @@ void parsingRxMsg1(void)
     break;
 
   default:
+    parsingDefault(&rxMsgFrame1);
     break;
   }
 }
 
-/*
-[0] STX - 0x31
-[1] STX - 0x32
-[2] Type - 0x00
-[3] Length - 0~END
-[4] LED 0~7
-[5] LED 8~15
-[6] LED 16~23
-[7] Checksum
-[8] END
-*/
-void parsingRxMsg6(void)
+void parsingRxMsg6(void) /* FPGA 연결 포트 */
 {
   uint32_t tmpStatusLED;
   switch (rxMsgFrame6.command)
   {
   case 0x00:
-    tmpStatusLED = (uint32_t)rxMsgFrame1.data[4] + ((uint32_t)rxMsgFrame1.data[5] << 8) + ((uint32_t)rxMsgFrame1.data[6] << 16);
+    tmpStatusLED = (uint32_t)rxMsgFrame6.data[4] + ((uint32_t)rxMsgFrame6.data[5] << 8) + ((uint32_t)rxMsgFrame6.data[6] << 16);
     for (int i = 0; i < 23; i++)
     {
       if (((tmpStatusLED >> i) & 0x01) == 0x01)
@@ -246,26 +306,18 @@ void parsingRxMsg6(void)
     break;
 
   default:
+    parsingDefault(&rxMsgFrame6);
     break;
   }
 }
 
-/*
-[0] STX - 0x31
-[1] STX - 0x32
-[2] Type - 0x00
-[3] Length - 0~END
-[4] LED 24~27
-[5] Checksum
-[6] END
-*/
-void parsingRxMsg7(void)
+void parsingRxMsg7(void) /* 라즈베리파이 연결 포트 */
 {
   uint32_t tmpStatusLED;
   switch (rxMsgFrame7.command)
   {
-  case 0x00:
-    tmpStatusLED = (uint32_t)rxMsgFrame1.data[4];
+  case 0x01:
+    tmpStatusLED = (uint32_t)rxMsgFrame7.data[4];
     for (int i = 0; i < 4; i++)
     {
       if (((tmpStatusLED >> i) & 0x01) == 0x01)
@@ -280,6 +332,7 @@ void parsingRxMsg7(void)
     xSemaphoreGive(binaryUartRxMsgHandle);
     break;
   default:
+    parsingDefault(&rxMsgFrame7);
     break;
   }
 }

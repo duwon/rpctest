@@ -168,7 +168,7 @@ int main(void)
   TouchGFXTaskHandle = osThreadCreate(osThread(TouchGFXTask), NULL);
 
   /* definition and creation of UartMsgTask */
-  osThreadDef(UartMsgTask, UartMsg_Task, osPriorityIdle, 0, 128);
+  osThreadDef(UartMsgTask, UartMsg_Task, osPriorityIdle, 0, 1024);
   UartMsgTaskHandle = osThreadCreate(osThread(UartMsgTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
